@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="english">
+<head>
+  <script src="{{ url_for('static', filename='css/finish.css') }}"></script>
+  <script src="{{ url_for('static', filename='js/play_again.js') }}"></script>
+<noscript>Sorry, your need to have javascript enabled to use this site!</noscript>
+</head>
+<body>
+
+  <div id="human">
+    <h1>Responses</h1>
+    <!-- For loop to show all the human questions and answers -->
+    <table style="margin-left: 20px;">
+      <th>
+          <tr style="color: green; ">    
+          <th>Question</th>
+          <th>Respondant A</th>
+          <th>Respondant B</th>
+          </tr>
+      </th>
+                
+      <!-- For loop logic of jinja template -->
+      {%for i in range(0, len)%}
+        
+        <!-- table rows -->
+        <tr>
+            <td>{{questions[i].question}}</td>
+            {% if column == "A" %}
+              <td>{{questions[i].human_response}}</td>
+              <td>{{questions[i].ai_response}}</td>
+            {% else %}
+              <td>{{questions[i].ai_response}}</td>
+              <td>{{questions[i].human_response}}</td>
+            {% endif %}
+        </tr>
+      {%endfor%}
+    </table>
+  </div>
+
+  <button id="play_again" onClick="javascript:play_again(this);"> Play Again </button>
+  
+</body>
+</html>

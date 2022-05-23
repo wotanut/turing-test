@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="english">
+<head>
+  <script src="{{ url_for('static', filename='js/finish_test.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/get_response.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/send_question.js') }}"></script>
+<noscript>Sorry, your need to have javascript enabled to use this site!</noscript>
+</head>
+<body>
+  <p id="q"> Please enter in a question to ask </p>
+   <input type="text" id="question" />
+<input type="button" id="submit" value="Post" />
+
+<button id="next" onClick="javascript:clickinner(this);"> Finish Test </button>
+
+  <div id="A">
+    
+  </div>
+  <div id="B">
+    
+  </div>
+  
+</body>
+</html>
