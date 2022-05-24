@@ -75,8 +75,6 @@ def post_question():
   change the answer for the provided question ID from None to the response
   """
   response = request.json # get the response in json format
-  ai_response = None # set a bunch of variables and remove them from the list
-  human_response = None
   question_ = questions[response["question_id"]].question
   question_id = questions[response["question_id"]].question_id
   
@@ -87,11 +85,15 @@ def post_question():
     ai_response = response["answer"]
     if questions[response["question_id"]].human_response != None:
       human_response = questions[response["question_id"]].human_response 
+    else:
+      human_response = None
   else:
     # set the human's response
     human_response = response["answer"]
     if questions[response["question_id"]].ai_response != None:
       ai_response = questions[response["question_id"]].ai_response
+    else:
+      ai_response = None
 
   # adds the response back to the list
 
@@ -106,8 +108,6 @@ def post_question():
 def whoresponded():
   """Checks who responded for the server"""
   try:
-    print(questions[-1].human_response)
-    print(questions[-1].ai_response)
     return jsonify(human=questions[-1].human_response, AI=questions[-1].ai_response,column=column),200
   except:
     return jsonify(None),404
