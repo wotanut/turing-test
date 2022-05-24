@@ -11,7 +11,7 @@ function myCallback() {
       // get the thing from the server
       var serverResponse = JSON.parse(xhr.responseText);
       console.log(serverResponse.column)
-      console.log(serverResponse.ai)
+      console.log(serverResponse.AI)
       console.log(serverResponse.human)
       // get the two nodes
 
@@ -26,7 +26,7 @@ function myCallback() {
           if(typeof(element) != 'undefined' && element != null){
               // element exists so pass and do nothing
           } else{
-            let insert = '<p id="response-A">'  + serverResponse.human + '</p>'
+            let insert = '<p id="response-A"> Respondant A: '  + serverResponse.human + '</p>'
             node.insertAdjacentHTML('afterend', insert);
           }
         }
@@ -38,7 +38,7 @@ function myCallback() {
           if(typeof(element) != 'undefined' && element != null){
               // element exists so pass and do nothing
           } else{
-            let insert = '<p id="response-B">'  + serverResponse.human + '</p>'
+            let insert = '<p id="response-B"> Respondant B: '  + serverResponse.human + '</p>'
             node.insertAdjacentHTML('afterend', insert);
           }
         }
@@ -47,18 +47,6 @@ function myCallback() {
       if (serverResponse.AI != null)
       {
         if (serverResponse.column == "A"){
-          node = document.getElementById('A');
-          var element = document.getElementById("response-A");
-
-          //If it isn't "undefined" and it isn't "null", then it exists.
-          if(typeof(element) != 'undefined' && element != null){
-              // element exists so pass and do nothing
-          } else{
-            let insert = '<p id="response-A">'  + serverResponse.AI + '</p>'
-            node.insertAdjacentHTML('afterend', insert);
-          }
-        }
-        else{
           node = document.getElementById('B');
           var element = document.getElementById("response-B");
 
@@ -66,7 +54,19 @@ function myCallback() {
           if(typeof(element) != 'undefined' && element != null){
               // element exists so pass and do nothing
           } else{
-            let insert = '<p id="response-B">'  + serverResponse.AI + '</p>'
+            let insert = '<p id="response-B"> Respondant B: '  + serverResponse.AI + '</p>'
+            node.insertAdjacentHTML('afterend', insert);
+          }
+        }
+        else{
+          node = document.getElementById('B');
+          var element = document.getElementById("response-A");
+
+          //If it isn't "undefined" and it isn't "null", then it exists.
+          if(typeof(element) != 'undefined' && element != null){
+              // element exists so pass and do nothing
+          } else{
+            let insert = '<p id="response-A"> Respondant A: '  + serverResponse.AI + '</p>'
             node.insertAdjacentHTML('afterend', insert);
           }
         }
